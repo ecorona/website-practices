@@ -1,3 +1,7 @@
+.navbar{
+    background-color: rgba($color: #000000, $alpha: .001);
+}
+
 .logo{
     margin-top: 25px;
     height: 50px;
@@ -16,4 +20,5 @@
     float: left;
     text-decoration: none;
     margin-left: 80px;
+    margin-top: 20px;
 }
