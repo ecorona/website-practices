@@ -8,11 +8,17 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-.fondo:{
+
+.fondo{
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100%;
 }
 
 .home{
   background: url(assets/images/homebg.jpg);
+}
+
+.page{
+  height: 100%;
 }
