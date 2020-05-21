@@ -8,10 +8,11 @@ import { HomeComponent } from './components/home/home.component';
 import { OurWorkComponent } from './components/our-work/our-work.component'
 import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
-import { JobsComponent } from './components/jobs/jobs.component';
 import { BlogComponent } from './components/blog/blog.component';
+
 import { ContactComponent } from './components/contact/contact.component'
 import { RegistroComponent } from './components/registro/registro.component';
+
 
 const routes: Routes = [
   {
@@ -35,14 +36,11 @@ const routes: Routes = [
     component: WhoWAreComponent
   },
   {
-    path: 'jobs',
-    component: JobsComponent
-  },
-  {
     path: 'blog',
     component: BlogComponent
   },
   {
+
     path: 'contact',
     component: ContactComponent
   },
@@ -51,6 +49,7 @@ const routes: Routes = [
     component: RegistroComponent
   },
   {
+
     path:'**', redirectTo: 'home' //cualquier otra ruta, mandar a home (DEFAULT)
   }
 
