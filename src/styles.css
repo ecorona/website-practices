@@ -18,12 +18,15 @@ body {
 .home{
   background: url(assets/images/homebg.jpg);
 }
-
 .ourwork{
   background: url(assets/images/ourwork.jpg);
 }
 .whoweare{
-  background: url(assets/images/fondoazulb.jpg);
+  background: url(assets/images/Uniformes-laborales.jpg);
+}
 .whatwedo{
   background-image: url(assets/images/wwdfondo.jpg);
+}
+.blog{
+  background: url(assets/images/fondoBlog.jpg) ;
 }

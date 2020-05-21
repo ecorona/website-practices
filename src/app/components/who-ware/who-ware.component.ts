@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BackgroundService } from 'src/app/services/background.service';
+
 
 @Component({
   selector: 'app-who-ware',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhoWAreComponent implements OnInit {
 
-  constructor() { }
+  constructor(private background: BackgroundService) { }
 
   ngOnInit(): void {
+    this.background.setClase('whoweare');
   }
 
 }
