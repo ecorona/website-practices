@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackgroundService } from 'src/app/services/background.service';
 
 @Component({
   selector: 'app-what-we-do',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhatWeDoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private background: BackgroundService) {
+
+   }
 
   ngOnInit(): void {
+    this.background.setClase('whatwedo')
   }
 
 }
