@@ -11,6 +11,7 @@ import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { ContactComponent } from './components/contact/contact.component'
+import { RegistroComponent } from './components/registro/registro.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent
+  },
+  {
+    path: 'registro',
+    component: RegistroComponent
   },
   {
     path:'**', redirectTo: 'home' //cualquier otra ruta, mandar a home (DEFAULT)

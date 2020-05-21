@@ -16,7 +16,8 @@ import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { JobsComponent } from './components/jobs/jobs.component';
 import { BlogComponent } from './components/blog/blog.component';
-import { ContactComponent } from './components/contact/contact.component'
+import { ContactComponent } from './components/contact/contact.component';
+import { RegistroComponent } from './components/registro/registro.component'
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ContactComponent } from './components/contact/contact.component'
     JobsComponent,
     BlogComponent,
     ContactComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
