@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HeaderComponent } from '../header/header.component';
+import { Component } from '@angular/core';
+import { BackgroundService } from 'src/app/services/background.service';
 
 
 @Component({
@@ -12,8 +10,7 @@ import { HeaderComponent } from '../header/header.component';
 export class AppComponent{
 
 
-  constructor(
-  ){
+  constructor( public background: BackgroundService){
     
   }
 
