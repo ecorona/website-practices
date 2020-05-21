@@ -1,0 +1,42 @@
+<form name="formSucursal">
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label for="nombreSucursal">Nombre de la Sucrsal</label>
+          <input type="text" class="form-control" name="nombreSucursal" placeholder="RazÃ³n social" ng-minlength="10" ng-model="sucursal.nombreSucursal" required>
+          <p class="small text-muted" ng-show="formSucursal.nombreSucursal.$invalid">Esta informaciÃ³n es requerida, y debe llevar 10 o mÃ¡s caracteres.</p>
+        </fieldset>
+      </div>
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label for="nombreResponsable">Responsable</label>
+          <input type="text" class="form-control" name="nombreResponsable" placeholder="Responsable" ng-model="sucursal.nombreResponsable" required ng-minlength="10">
+          <p class="small text-muted" ng-if="formSucursal.nombreResponsable.$invalid">Esta informaciÃ³n es requerida y debe llevar 10 o mÃ¡s caracteres.</p>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" placeholder="Email" ng-model="sucursal.email" required>
+          <p class="small text-muted" ng-if="formSucursal.email.$invalid">Email es requerido</p>
+        </fieldset>
+      </div>
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label for="telefono">TelÃ©fono</label>
+          <input type="text" class="form-control" name="telefono" placeholder="TelÃ©fono" ng-model="sucursal.telefono" required ng-minlength="10" ng-maxlength="10">
+          <p class="small text-muted" ng-if="formSucursal.telefono.$invalid">El telÃ©fono es requerido y debe ser de 10 digitos</p>
+        </fieldset>
+      </div>
+    </div>
+    <!--<div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <label for="direccion">DirecciÃ³n</label>
+          <input type="text" class="form-control" id="direccion" placeholder="DirecciÃ³n" ng-model="sucursal.direccion" required>
+        </fieldset>
+      </div>
+    </div>-->
+  </form>

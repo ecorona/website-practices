@@ -10,6 +10,10 @@ import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { BlogComponent } from './components/blog/blog.component';
 
+import { ContactComponent } from './components/contact/contact.component'
+import { RegistroComponent } from './components/registro/registro.component';
+
+
 const routes: Routes = [
   {
     path: 'whatwedo',
@@ -36,6 +40,16 @@ const routes: Routes = [
     component: BlogComponent
   },
   {
+
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'registro',
+    component: RegistroComponent
+  },
+  {
+
     path:'**', redirectTo: 'home' //cualquier otra ruta, mandar a home (DEFAULT)
   }
 
