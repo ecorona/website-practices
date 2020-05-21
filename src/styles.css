@@ -10,15 +10,11 @@ body {
 }
 
 .fondo{
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   height: 100%;
 }
 
 .home{
   background: url(assets/images/homebg.jpg);
-}
-
-.page{
-  height: 100%;
 }
