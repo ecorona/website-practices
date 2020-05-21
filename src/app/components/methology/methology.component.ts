@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackgroundService } from 'src/app/services/background.service';
 
 @Component({
   selector: 'app-methology',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MethologyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private background: BackgroundService) {
 
-  ngOnInit(): void {
   }
+
+ ngOnInit(): void {
+   this.background.setClase('methodology')
+ }
 
 }
