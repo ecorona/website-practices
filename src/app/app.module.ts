@@ -14,9 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { OurWorkComponent } from './components/our-work/our-work.component'
 import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
-import { JobsComponent } from './components/jobs/jobs.component';
 import { BlogComponent } from './components/blog/blog.component';
-import { ContactComponent } from './components/contact/contact.component'
 
 @NgModule({
   declarations: [
@@ -27,9 +25,7 @@ import { ContactComponent } from './components/contact/contact.component'
     OurWorkComponent,
     MethologyComponent,
     WhoWAreComponent,
-    JobsComponent,
     BlogComponent,
-    ContactComponent,
   ],
   imports: [
     BrowserModule,
