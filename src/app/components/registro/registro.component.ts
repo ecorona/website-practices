@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, NgForm, FormBuilder, Validators, FormGroupName } from '@angular/forms';
-import {HttpClientModule, HttpClient} from '@angular/common/http'
-import { from } from 'rxjs';
+import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
+import { HttpClient} from '@angular/common/http'
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -20,14 +20,22 @@ export class RegistroComponent{
     })
    }
 
-   enviar(){
-     let url = "localhost:1337"
+   enviar(value){
+     let url = "http://localhost:1337";
+     console.log("value tiene", value);
      this.http.post (url, {
-       signupForm:this.signupForm
+       name:value.name,
+       user:value.user,
+       email:value.email,
+       password:value.password,
+
       
       }).toPromise().then((data: any) =>{
-        console.log(data)
+        console.log("Usuario creado", data)
+      },(error)=>{
+        console.log("error al crear usuario", error)
       })
+
      
    }
 
