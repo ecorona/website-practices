@@ -41,8 +41,8 @@ export class GetService {
 
   
  
-  buscarClientes(clientes) {
-    return this.query('clientes/get', 'get', clientes);
+  buscarClientes() {
+    return this.query('clientes/get', 'get');
   }
 
 }
