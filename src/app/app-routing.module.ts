@@ -8,6 +8,7 @@ import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
 
 
 
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'registro',
     component: RegistroComponent
+  },
+  {
+    path: 'clientes',
+    component: ClientesComponent
   },
   {
 

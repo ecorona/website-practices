@@ -16,6 +16,7 @@ import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     WhoWAreComponent,
     BlogComponent,
     RegistroComponent,
+    ClientesComponent,
   ],
   imports: [
     BrowserModule,
