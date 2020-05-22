@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HeaderComponent } from './components/header/header.component';
-
 import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component';
 import { HomeComponent } from './components/home/home.component';
 import { OurWorkComponent } from './components/our-work/our-work.component'
 import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { BlogComponent } from './components/blog/blog.component';
-
-import { ContactComponent } from './components/contact/contact.component'
 import { RegistroComponent } from './components/registro/registro.component';
+
 
 
 const routes: Routes = [
@@ -38,11 +35,6 @@ const routes: Routes = [
   {
     path: 'blog',
     component: BlogComponent
-  },
-  {
-
-    path: 'contact',
-    component: ContactComponent
   },
   {
     path: 'registro',
