@@ -16,7 +16,7 @@ export class RegistroComponent{
   // importamos aqui el service que se hace cargo
   constructor( 
     private router: Router, 
-    private _registro: RegistroService, 
+    private _registro: RegistroService, //importamos el registro service (de forma privada) para poder hacer uso de el desde el código
     private _builder: FormBuilder
   ) {
 

@@ -1,3 +1,13 @@
 <div class="page">
     Home
+
+    <!--cambiar esto a if else -->
+    <div *ngIf="registro.registrado.id">
+        Hola registrado: {{registro.registrado.name}}.
+    </div>
+
+    <div *ngIf="!registro.registrado.id">
+        Sin registro.
+    </div>
+
 </div>

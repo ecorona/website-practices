@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackgroundService } from 'src/app/services/background.service';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,10 @@ import { BackgroundService } from 'src/app/services/background.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private background: BackgroundService) { }
+  constructor(
+    private background: BackgroundService,
+    public registro: RegistroService //importamos el registro service de forma publica para poder hacer uso de el en la plantilla html
+    ) { }
 
   ngOnInit(): void {
     this.background.setClase('home');
