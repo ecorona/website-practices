@@ -21,7 +21,7 @@ export class RegistroComponent{
    }
 
    enviar(value){
-     let url = "http://localhost:1337";
+     let url = "http://localhost:1337/register";
      console.log("value tiene", value);
      this.http.post (url, {
        name:value.name,
@@ -32,8 +32,8 @@ export class RegistroComponent{
       
       }).toPromise().then((data: any) =>{
         console.log("Usuario creado", data)
-      },(error)=>{
-        console.log("error al crear usuario", error)
+      },(response)=>{
+        console.log("Usuario creado2:", response)
       })
 
      
