@@ -6,7 +6,7 @@ import { GetService } from 'src/app/services/get.service';
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.scss']
 })
-export class ClientesComponent{
+export class ClientesComponent implements OnInit{
 
   clientes = []
 
@@ -15,21 +15,24 @@ export class ClientesComponent{
   ) {
 
    }
+  ngOnInit(): void {
+    this.buscarClientes()
+  }
 
  
    error = false;
-   buscarClientes(clientes){
+   buscarClientes(){
      console.log("buscando clientes");
-     this._get.buscarClientes({clientes}).subscribe(resp =>{
+     this._get.buscarClientes().subscribe(resp =>{
       console.log("respueste de Get", resp );
-      
+      this.clientes = resp.data
      
 
 
      }, (err) => {
 
       this.error = true;
-      console.log('error en registro', err);
+      console.log('error traer registros', err);
       
      });
    }
