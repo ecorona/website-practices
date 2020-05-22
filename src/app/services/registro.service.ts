@@ -27,6 +27,8 @@ export class RegistroService {
   la url final como http://localhost:1337/api/v1/registro/cliente
 
   esto va a requerir en el back que la url /api/v1/registro/cliente se haga cargo de manejar el registro
+
+  esta funcion al final regresa un http request
   */
   query(query: string, action: string, data?: any) {
     const url = `${this.SERVER}/api/v1/${query}`;
