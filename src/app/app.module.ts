@@ -17,6 +17,7 @@ import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { ClientesComponent } from './components/clientes/clientes.component';
     BlogComponent,
     RegistroComponent,
     ClientesComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

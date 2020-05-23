@@ -12,7 +12,7 @@ export class GetService {
   //Variable local utilizada para conectar al server, extraida del environment
   private SERVER = environment.server;
 
-  cliente = {
+  ingresado = {
     id:0,
     name:''
   }; 
@@ -51,6 +51,22 @@ export class GetService {
 
   borrarCliente(id){
     return this.query('clientes/delete', 'post', id);
+  }
+
+  ingresar(cliente){
+    /*
+    cliente={
+      email: string
+      password: string
+    }
+    */
+    return this.query('clientes/login', 'post', cliente);
+  }
+
+  setIngresado(cliente){
+    setTimeout(()=>{
+      this.ingresado = cliente;
+    })
   }
 
 }
