@@ -6,26 +6,32 @@
     <div id="my-nav" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/home">Home</a>
+                <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/whatwedo" tabindex="-1">What we do</a>
+                <a class="nav-link" routerLink="/whatwedo"  routerLinkActive="active" tabindex="-1">What we do</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/ourwork" tabindex="-1">Our Work</a>
+                <a class="nav-link" routerLink="/ourwork"  routerLinkActive="active" tabindex="-1">Our Work</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/methology" tabindex="-1">Methodology</a>
+                <a class="nav-link" routerLink="/methology"  routerLinkActive="active" tabindex="-1">Methodology</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/whoweare" tabindex="-1">Who we are</a>
+                <a class="nav-link" routerLink="/whoweare"  routerLinkActive="active" tabindex="-1">Who we are</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/blog" tabindex="-1">Blog</a>
+                <a class="nav-link" routerLink="/blog"  routerLinkActive="active" tabindex="-1">Blog</a>
+            </li>
+            <li class="nav-item active" *ngIf="_clientes.ingresado.id">
+                <a class="nav-link" routerLink="/clientes"  routerLinkActive="active" tabindex="-1">Clientes</a>
             </li>
         </ul>
-        <button class="btn btn-info" *ngIf="!_clientes.ingresado.id" type="button"><a href="/registro">Crear sesión</a></button>
-        <button class="btn btn-info" *ngIf="_clientes.ingresado.id" type="button"><a href="">Cerrar sesión</a></button>
-        <button class="btn btn-success ml-2" *ngIf="!_clientes.ingresado.id" type="button"><a href="/login">Iniciar sesión</a></button>
+        <a class="btn btn-info" *ngIf="!_clientes.ingresado.id" routerLink="/registro">
+            Crear sesión</a>
+        <button class="btn btn-info" *ngIf="_clientes.ingresado.id" type="button" (click)="_clientes.logout()">
+            Cerrar Sesión</button>
+        <a class="btn btn-success ml-2" *ngIf="!_clientes.ingresado.id" routerLink="/login">
+            Iniciar sesión</a>
     </div>
 </nav>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class ClientesService {
   }; 
   
  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   /* 
   La función query se encarga de que la url sea facil de editar en todo el service,
@@ -67,6 +67,17 @@ export class ClientesService {
     setTimeout(()=>{
       this.ingresado = cliente;
     })
+  }
+
+  logout(){
+    console.log("logout!")
+    setTimeout(()=>{
+      this.ingresado = {
+        id: 0,
+        name: ''
+      }
+    })
+    this.router.navigateByUrl('/home');
   }
 
 }

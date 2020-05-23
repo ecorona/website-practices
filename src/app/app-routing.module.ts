@@ -11,7 +11,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { LoginComponent } from './components/login/login.component';
 
-
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -46,9 +46,15 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  /*{
+    path: 'miperfil',
+    component: LoginComponent,
+    canActivate: [AuthGuard]
+  },*/
   {
     path: 'clientes',
-    component: ClientesComponent
+    component: ClientesComponent,
+    canActivate: [AuthGuard],
   },
   {
 
