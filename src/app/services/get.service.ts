@@ -12,7 +12,10 @@ export class GetService {
   //Variable local utilizada para conectar al server, extraida del environment
   private SERVER = environment.server;
 
-
+  cliente = {
+    id:0,
+    name:''
+  }; 
   
  
   constructor(private http: HttpClient) { }
@@ -45,8 +48,9 @@ export class GetService {
     return this.query('clientes/get', 'get');
   }
 
-  borrarCliente(cliente){
-    return this.query('clientes/delete', 'post')
+
+  borrarCliente(id){
+    return this.query('clientes/delete', 'post', id);
   }
 
 }
