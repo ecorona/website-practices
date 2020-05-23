@@ -6,6 +6,10 @@
         Hola registrado: {{registro.registrado.name}}.
     </div>
 
+    <div *ngIf="ingreso.ingresado.id">
+        Hola registrado: {{ingreso.ingresado.name}}.
+    </div>
+
     <div *ngIf="!registro.registrado.id">
         Sin registro.
     </div>
