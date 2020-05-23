@@ -1,3 +1,6 @@
 <p>clientes works!</p>
 <h1>clientes</h1>
-<h4 *ngFor="let cliente of clientes" >{{cliente.name}}-{{cliente.email}}</h4>
+<h4 *ngFor="let cliente of clientes" >*ngFor="let cliente of clientes"</h4>
+<ul>
+    <li *ngFor="let cliente of clientes" >{{cliente.nombre}}_{{cliente.email}}<button (click)="borrarCliente(cliente)"></button></li>
+</ul>

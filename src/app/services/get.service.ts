@@ -45,5 +45,9 @@ export class GetService {
     return this.query('clientes/get', 'get');
   }
 
+  borrarCliente(cliente){
+    return this.query('clientes/delete', 'post')
+  }
+
 }
 
