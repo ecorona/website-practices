@@ -11,19 +11,19 @@ export class ClientesComponent implements OnInit{
   clientes = []
 
   constructor(
-    private _get: GetService,
+    private cliente: GetService,
   ) {
 
    }
   ngOnInit(): void {
     this.buscarClientes()
   }
-
  
    error = false;
+
    buscarClientes(){
      console.log("buscando clientes");
-     this._get.buscarClientes().subscribe(resp =>{
+     this.cliente.buscarClientes().subscribe(resp =>{
       console.log("respueste de Get", resp );
       this.clientes = resp.data
      
@@ -36,5 +36,23 @@ export class ClientesComponent implements OnInit{
       
      });
    }
+
+   borrarCliente(cliente){
+     console.log("borrando cliente", cliente);
+     this.cliente.borrarCliente({
+       id: cliente.id
+     }).subscribe(resp =>{
+       console.log("cliente eliminado", resp);
+       
+       
+       
+     }, (err) => { //en caso de error en el http request
+      //mostrar el mensaje de error (html) cambiando la variable.
+      
+      console.log('error al borrar registro:', err);
+     });
+     
+   }
+   
    
 }
