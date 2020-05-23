@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import { RegistroService } from '../../services/registro.service';
+import { ClientesService } from '../../services/clientes.service';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-registro',
@@ -17,7 +19,8 @@ export class RegistroComponent{
   constructor( 
     private router: Router, 
     private _registro: RegistroService, //importamos el registro service (de forma privada) para poder hacer uso de el desde el código
-    private _builder: FormBuilder
+    private _builder: FormBuilder,
+    private _clientes: ClientesService
   ) {
 
     this.signupForm = this._builder.group({
@@ -41,7 +44,7 @@ export class RegistroComponent{
       }).subscribe(resp => { //no suscribimos a la respuesta del http request
         console.log('respuesta registro:', resp);
 
-        this._registro.setRegistrado( resp.data ); //cargamos el registrado en el service!
+        this._clientes.setIngresado( resp ); //cargamos el registrado en el service!
 
         // aqui deberiamos mandarlo a una página donde le demos las gracias (/gracias), 
         // en esa pagina se van a mostrar sus datos de registro que estamos almacenando en el mismo service

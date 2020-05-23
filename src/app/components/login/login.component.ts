@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
-import { GetService } from '../../services/get.service';
+import { ClientesService } from '../../services/clientes.service';
 import { Router } from '@angular/router';
 
 
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router, 
-    private _ingreso: GetService, //importamos el registro service (de forma privada) para poder hacer uso de el desde el código
+    private _ingreso: ClientesService, //importamos el registro service (de forma privada) para poder hacer uso de el desde el código
     private _builder: FormBuilder
   ) {
     this.signinForm = this._builder.group({

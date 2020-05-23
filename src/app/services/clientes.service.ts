@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
-export class GetService {
+export class ClientesService {
 
   //Variable local utilizada para conectar al server, extraida del environment
   private SERVER = environment.server;
