@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GetService } from 'src/app/services/get.service';
+import { ClientesService } from 'src/app/services/clientes.service';
 
 @Component({
   selector: 'app-clientes',
@@ -11,10 +11,8 @@ export class ClientesComponent implements OnInit{
   clientes = []
 
   constructor(
-    private _cliente: GetService,
-  ) {
-
-   }
+    private _clientes: ClientesService,
+  ) {}
   ngOnInit(): void {
     this.buscarClientes()
   }
@@ -23,7 +21,7 @@ export class ClientesComponent implements OnInit{
 
    buscarClientes(){
      console.log("buscando clientes");
-     this._cliente.buscarClientes().subscribe(resp =>{
+     this._clientes.buscarClientes().subscribe(resp =>{
       console.log("respueste de Get", resp );
       setTimeout(()=>{
         this.clientes = resp
@@ -43,7 +41,7 @@ export class ClientesComponent implements OnInit{
 
    borrarCliente(cliente){
      console.log("borrando cliente", cliente);
-     this._cliente.borrarCliente({
+     this._clientes.borrarCliente({
        id: cliente.id
      }).subscribe(resp =>{
        console.log("cliente eliminado", resp);

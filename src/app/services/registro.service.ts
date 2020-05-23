@@ -14,10 +14,7 @@ export class RegistroService {
 
 
   //aquí almacenaremos el último registro que se haga, esto para poder mostrarlo en cualquier pagina o componente donde se carge el service
-  registrado = {
-    id:0,
-    name:''
-  }; 
+
   constructor(private http: HttpClient) { }
 
   /* 
@@ -42,11 +39,6 @@ export class RegistroService {
     }
   }
 
-  setRegistrado(cliente){
-    setTimeout(()=>{
-      this.registrado = cliente;
-    })
-  }
   registrar(cliente) {
     return this.query('registro/cliente', 'post', cliente);
   }

@@ -2,16 +2,10 @@
     Home
 
     <!--cambiar esto a if else -->
-    <div *ngIf="registro.registrado.id">
-        Hola registrado: {{registro.registrado.name}}.
+
+    <div *ngIf="_clientes.ingresado.id">
+        Hola: {{_clientes.ingresado.name}}.
     </div>
 
-    <div *ngIf="ingreso.ingresado.id">
-        Hola registrado: {{ingreso.ingresado.name}}.
-    </div>
-
-    <div *ngIf="!registro.registrado.id">
-        Sin registro.
-    </div>
 
 </div>
