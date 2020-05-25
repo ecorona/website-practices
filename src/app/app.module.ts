@@ -2,8 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { InterceptorService } from './services/interceptor.service';
 
 //componentes
 import { HeaderComponent } from './components/header/header.component';
@@ -41,7 +44,11 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
   ],
   providers: [
-    
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

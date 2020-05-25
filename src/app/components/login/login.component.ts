@@ -36,15 +36,16 @@ export class LoginComponent implements OnInit {
     this._ingreso.ingresar({ //lanzar solicitud desde el service, recordemos que regresará un http request
       email:     formValues.email,
       password:  formValues.password
-    }).subscribe(cliente => { //no suscribimos a la respuesta del http request
-      console.log('respuesta ingreso:', cliente);
+    }).subscribe(responseData => { //no suscribimos a la respuesta del http request
+      console.log('respuesta ingreso:', responseData);
       //la respuesta esta vacia si no existe con los datos proveidos
       //asi que evaluamos...
-      if(!cliente || !cliente.id){
+      if(!responseData || !responseData.cliente || !responseData.cliente.id){
         return alert("Sus credenciales no coinciden con ninguna cuenta en el sistema.")
       }
       
-      this._ingreso.setIngresado( cliente ); //cargamos el registrado en el service!
+      this._ingreso.setIngresado( responseData.cliente, responseData.llave ); //cargamos el registrado en el service!
+
       //ya tenemos cliente!
       //ahora que hacemos?
       this.router.navigateByUrl('/home');

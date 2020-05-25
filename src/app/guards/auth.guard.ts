@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
     console.log('state:', state);
 
     // tiene cliente y un id?
-    if (this._clientes.ingresado.id) {
+    if (this._clientes.ingresado.id && this._clientes.llave) {
       return true; //si puede entrar a la ruta
     } else { //no puede entrar y lo mandamos a login
       this.router.navigateByUrl('/login');

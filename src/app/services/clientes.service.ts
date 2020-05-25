@@ -12,6 +12,7 @@ export class ClientesService {
   //Variable local utilizada para conectar al server, extraida del environment
   private SERVER = environment.server;
 
+  llave='';
   ingresado = {
     id:0,
     name:''
@@ -42,7 +43,9 @@ export class ClientesService {
     }
   }
 
-  
+  registrar(cliente) {
+    return this.query('clientes/registro', 'post', cliente);
+  }
  
   buscarClientes() {
     return this.query('clientes/get', 'get');
@@ -63,9 +66,10 @@ export class ClientesService {
     return this.query('clientes/login', 'post', cliente);
   }
 
-  setIngresado(cliente){
+  setIngresado(cliente, llave){
     setTimeout(()=>{
       this.ingresado = cliente;
+      this.llave = llave;
     })
   }
 
@@ -76,6 +80,7 @@ export class ClientesService {
         id: 0,
         name: ''
       }
+      this.llave='';
     })
     this.router.navigateByUrl('/home');
   }

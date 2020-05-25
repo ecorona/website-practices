@@ -10,6 +10,7 @@
                             <fieldset class="form-group">
                                 <label>Nombre</label>
                                 <input type="text" class="form-control" formControlName="name" placeholder="Nombre">
+                                <div *ngIf="signupForm.get('name').hasError('required') && signupForm.get('name').touched"><h5>Este campo es requerido</h5></div>
                             </fieldset>
                         </div>
                     </div>
@@ -18,6 +19,7 @@
                             <fieldset class="form-group">
                                 <label>Nombre de usuario</label>
                                 <input type="text" class="form-control" formControlName="user" placeholder="Nombre de usuario">
+                                <div *ngIf="signupForm.get('user').hasError('required') && signupForm.get('user').touched"><h5>Este campo es requerido</h5></div>
                             </fieldset>
                         </div>
                     </div>
@@ -27,7 +29,8 @@
                                 <label>Email</label>
                                 <input type="email" class="form-control" formControlName="email" placeholder="Email">
                             </fieldset>
-                            <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched"><h5>Este campo es requerido</h5></div>
+                            <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched"><h5>Este debe ser email</h5></div>
+                            <div *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched"><h5>Este es requerido</h5></div>
                         </div>
                     </div>   
                     <div class="row mb-3">
@@ -35,6 +38,7 @@
                             <fieldset class="form-group">
                                 <label>Contraseña</label>
                                 <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+                                <div *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched"><h5>Este campo es requerido</h5></div>
                             </fieldset>
                         </div>
                     </div>
