@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router, 
-    private _ingreso: ClientesService, //importamos el registro service (de forma privada) para poder hacer uso de el desde el código
+    private _clientes: ClientesService, //importamos el registro service (de forma privada) para poder hacer uso de el desde el código
     private _builder: FormBuilder
   ) {
     this.signinForm = this._builder.group({
@@ -33,26 +33,21 @@ export class LoginComponent implements OnInit {
 
   ingresar(formValues){
     console.log("Se va a registrar:", formValues);
-    this._ingreso.ingresar({ //lanzar solicitud desde el service, recordemos que regresará un http request
+    this._clientes.ingresar({ //lanzar solicitud desde el service, recordemos que regresará un http request
       email:     formValues.email,
       password:  formValues.password
-    }).subscribe(responseData => { //no suscribimos a la respuesta del http request
-      console.log('respuesta ingreso:', responseData);
-      //la respuesta esta vacia si no existe con los datos proveidos
-      //asi que evaluamos...
-      if(!responseData || !responseData.cliente || !responseData.cliente.id){
-        return alert("Sus credenciales no coinciden con ninguna cuenta en el sistema.")
-      }
+    }).subscribe(respuesta => { //no suscribimos a la respuesta del http request
+      console.log("respuesta ingresar()", respuesta);
       
-      this._ingreso.setIngresado( responseData.cliente, responseData.llave ); //cargamos el registrado en el service!
-
       //ya tenemos cliente!
       //ahora que hacemos?
-      this.router.navigateByUrl('/home');
+      if(this._clientes.jwt){
+        this.router.navigateByUrl('/home');
+        // aqui deberiamos mandarlo a una página donde le demos las gracias (/gracias), 
+        // en esa pagina se van a mostrar sus datos de ingreso que estamos almacenando en el mismo service
+      }
       
       
-      // aqui deberiamos mandarlo a una página donde le demos las gracias (/gracias), 
-      // en esa pagina se van a mostrar sus datos de ingreso que estamos almacenando en el mismo service
     }, (err) => { //en caso de error en el http request
       //mostrar el mensaje de error (html) cambiando la variable.
       this.error = true;

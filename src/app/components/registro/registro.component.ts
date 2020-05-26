@@ -42,8 +42,6 @@ export class RegistroComponent{
       }).subscribe(resp => { //no suscribimos a la respuesta del http request
         console.log('respuesta registro:', resp);
 
-        this._clientes.setIngresado( resp.cliente, resp.llave ); //cargamos el registrado en el service!
-
         // aqui deberiamos mandarlo a una página donde le demos las gracias (/gracias), 
         // en esa pagina se van a mostrar sus datos de registro que estamos almacenando en el mismo service
         this.router.navigateByUrl('/home');

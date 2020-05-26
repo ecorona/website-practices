@@ -24,10 +24,10 @@ export class InterceptorService implements HttpInterceptor {
     let request = req;
 
     // inyectar la llave en los headers de las solicitudes...
-    if (this._clientes.llave) {
+    if (this._clientes.jwt) {
       request = req.clone({
         setHeaders: {
-          authorization: this._clientes.llave,
+          authorization: 'Bearer ' + this._clientes.jwt,
         }
       });
     }

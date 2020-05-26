@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ export class ClientesService {
   //Variable local utilizada para conectar al server, extraida del environment
   private SERVER = environment.server;
 
-  llave='';
+  jwt='';
   ingresado = {
     id:0,
     name:''
@@ -44,13 +45,44 @@ export class ClientesService {
   }
 
   registrar(cliente) {
-    return this.query('clientes/registro', 'post', cliente);
+    return this.query('clientes/registro', 'post', cliente).pipe(
+      // atrapar la respuesta y almacenar el jwt en localstorage
+      map((resp: any) => {
+        this.jwt = resp.jwt;
+        this.ingresado = resp.cliente;
+        this.fixLocalStorage();
+      })
+    );
   }
- 
+
+  //almacenar el localstorage los valores jwt e ingresado
+  fixLocalStorage(){
+    localStorage.setItem('sesion', JSON.stringify({jwt:this.jwt, cliente:this.ingresado}));
+    console.log("Sesion almacenada en localStorage");
+  }
+
+  loadLocalStorage(){
+    console.log("Cargando sesion de localStorage");
+    let sesion = localStorage.getItem('sesion');
+    if(sesion){
+      let sesionObj = JSON.parse(sesion);
+      if(sesion && sesionObj.cliente && sesionObj.jwt){
+        console.log("Sesión de cliente cargada de localStorage");
+        this.jwt=sesionObj.jwt;
+        this.ingresado=sesionObj.cliente;
+        return;
+      }
+    }
+    console.log("No se encontró una sesión en localStorage")
+  }
+
+  resetLocalStorage(){
+    localStorage.removeItem('sesion');
+    console.log("Sesion eliminada de localStorage");
+  }
   buscarClientes() {
     return this.query('clientes/get', 'get');
   }
-
 
   borrarCliente(id){
     return this.query('clientes/delete', 'post', id);
@@ -63,14 +95,22 @@ export class ClientesService {
       password: string
     }
     */
-    return this.query('clientes/login', 'post', cliente);
-  }
+    return this.query('clientes/login', 'post', cliente).pipe(
+      // atrapar la respuesta y almacenar el jwt en localstorage
+      map((responseData: any) => {
+        console.log('respuesta ingreso:', responseData);
+        //la respuesta esta vacia si no existe con los datos proveidos
+        //asi que evaluamos...
+        if(!responseData || !responseData.cliente || !responseData.cliente.id){
+          return alert("Sus credenciales no coinciden con ninguna cuenta en el sistema.")
+        }
 
-  setIngresado(cliente, llave){
-    setTimeout(()=>{
-      this.ingresado = cliente;
-      this.llave = llave;
-    })
+        this.jwt = responseData.jwt;
+        this.ingresado = responseData.cliente;
+        this.fixLocalStorage();
+        
+      })
+    );
   }
 
   logout(){
@@ -80,7 +120,8 @@ export class ClientesService {
         id: 0,
         name: ''
       }
-      this.llave='';
+      this.jwt='';
+      this.resetLocalStorage();
     })
     this.router.navigateByUrl('/home');
   }
