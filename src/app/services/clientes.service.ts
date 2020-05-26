@@ -28,10 +28,10 @@ export class ClientesService {
 
   la parte del servidor se extrae de environments la cual contiene: http://localhost:1337
 
-  la parte /api/v1/ siempre estará presente, solo cambiaría el endpoint: registro/cliente, lo que conformaria
-  la url final como http://localhost:1337/api/v1/registro/cliente
+  la parte /api/v1/ siempre estará presente, solo cambiaría el endpoint: clientes/registro, lo que conformaria
+  la url final como http://localhost:1337/api/v1/clientes/registro
 
-  esto va a requerir en el back que la url /api/v1/registro/cliente se haga cargo de manejar el registro
+  esto va a requerir en el back que la url /api/v1/clientes/registro se haga cargo de manejar el registro
 
   esta funcion al final regresa un http request
   */

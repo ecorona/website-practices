@@ -14,7 +14,6 @@ export class AppComponent{
   }
   initializeApp() {
     console.log('Aqui vamos, inicializando app!');
-
     //el usuario existe en localStorage? cargarlo!
     this._clientes.loadLocalStorage();
   }
