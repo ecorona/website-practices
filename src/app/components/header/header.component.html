@@ -41,13 +41,13 @@
                     Clientes</a>
             </li>
         </ul>
-        <a class="btn btn-info" *ngIf="!_clientes.ingresado || !_clientes.ingresado.id" routerLink="/registro">
+        <a class="btn btn-info btn-sm" *ngIf="!_clientes.ingresado || !_clientes.ingresado.id" routerLink="/registro">
             <i class="fa fa-pencil" aria-hidden="true"></i>
             Registro</a>
-        <button class="btn btn-info" *ngIf="_clientes.ingresado && _clientes.ingresado.id" type="button" (click)="_clientes.logout()">
+        <button class="btn btn-info btn-sm" *ngIf="_clientes.ingresado && _clientes.ingresado.id" type="button" (click)="_clientes.logout()">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
             Cerrar Sesión</button>
-        <a class="btn btn-success ml-2" *ngIf="!_clientes.ingresado || !_clientes.ingresado.id" routerLink="/login">
+        <a class="btn btn-success btn-sm ml-2" *ngIf="!_clientes.ingresado || !_clientes.ingresado.id" routerLink="/login">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
             Iniciar sesión</a>
     </div>
