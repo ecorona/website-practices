@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  server: 'http://localhost:1337' //url del back!
+  server: 'http://localhost' //url del back!
 };
