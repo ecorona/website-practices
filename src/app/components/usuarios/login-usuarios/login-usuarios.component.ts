@@ -34,11 +34,11 @@ export class LoginUsuariosComponent implements OnInit {
   error = false;
 
 
-  ingresar(formValues){
-    console.log("Se va a registrar:", formValues);
+  ingresar(usuario){
+    console.log("Va a ingresar:", usuario);
     this._usuarios.ingresar({ //lanzar solicitud desde el service, recordemos que regresará un http request
-      email:     formValues.email,
-      password:  formValues.password
+      email:     usuario.email,
+      password:  usuario.password
     }).subscribe(respuesta => { //no suscribimos a la respuesta del http request
       console.log("respuesta ingresar()", respuesta);
       

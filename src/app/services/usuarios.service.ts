@@ -74,13 +74,15 @@ export class UsuariosService {
     return this.query('usuarios/get', 'get');
   }
   ingresar(usuario){
+    console.log('usuario: ', usuario);
+    
     /*
     usuario={
       email: string
       password: string
     }
     */
-    return this.query('usuarios/login', 'post', usuario).pipe(
+    return this.query('acceso/usuarios/login', 'post', usuario).pipe(
       // atrapar la respuesta y almacenar el jwt en localstorage
       map((responseData: any) => {
         console.log('respuesta ingreso:', responseData);
