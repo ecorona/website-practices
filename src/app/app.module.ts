@@ -22,6 +22,7 @@ import { RegistroComponent } from './components/clientes/registro/registro.compo
 import { ClientesComponent } from './components/admin/clientes/clientes.component';
 import { LoginComponent } from './components/clientes/login/login.component';
 import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/login-usuarios.component';
+import { PerfilComponent } from './components/clientes/perfil/perfil.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/log
     LoginUsuariosComponent,
     LoginComponent,
     LoginUsuariosComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

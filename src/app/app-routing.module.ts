@@ -11,6 +11,7 @@ import { RegistroComponent } from './components/clientes/registro/registro.compo
 import { ClientesComponent } from './components/admin/clientes/clientes.component';
 import { LoginComponent } from './components/clientes/login/login.component';
 import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/login-usuarios.component';
+import { PerfilComponent } from './components/clientes/perfil/perfil.component';
 
 import { ClientesGuard } from './guards/clientes.guard';
 import { UsuariosGuard } from './guards/usuarios.guard';
@@ -67,10 +68,14 @@ const routes: Routes = [
     component: LoginUsuariosComponent,
   },
   {
+    path: 'clientes/perfil',
+    component: PerfilComponent,
+    canActivate: [ClientesGuard]
+  },
+  {
 
     path:'**', redirectTo: 'home' //cualquier otra ruta, mandar a home (DEFAULT)
   }
-
 ];
 
 @NgModule({
