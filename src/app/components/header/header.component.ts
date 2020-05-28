@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientesService } from '../../services/clientes.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 @Component({
   selector: 'header-component',
@@ -9,7 +9,7 @@ import { ClientesService } from '../../services/clientes.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    public _clientes: ClientesService, //importamos el registro service (de forma privada) para poder hacer uso de el desde el código
+    public _usuarios: UsuariosService, //importamos el registro service (de forma privada) para poder hacer uso de el desde el código
   ) { }
 
   ngOnInit(): void {

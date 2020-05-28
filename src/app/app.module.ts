@@ -18,9 +18,10 @@ import { OurWorkComponent } from './components/our-work/our-work.component'
 import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { BlogComponent } from './components/blog/blog.component';
-import { RegistroComponent } from './components/registro/registro.component';
-import { ClientesComponent } from './components/clientes/clientes.component';
-import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/clientes/registro/registro.component';
+import { ClientesComponent } from './components/admin/clientes/clientes.component';
+import { LoginComponent } from './components/clientes/login/login.component';
+import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/login-usuarios.component';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { LoginComponent } from './components/login/login.component';
     BlogComponent,
     RegistroComponent,
     ClientesComponent,
+    LoginUsuariosComponent,
     LoginComponent,
+    LoginUsuariosComponent,
   ],
   imports: [
     BrowserModule,
