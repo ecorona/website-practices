@@ -34,3 +34,9 @@ body {
 .blog{
   background: url(assets/images/fondoBlog.jpg) ;
 }
+.login{
+  background: white ;
+}
+.registro{
+  background: white ;
+}
