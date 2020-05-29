@@ -3,7 +3,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { SwalService } from 'src/app/services/swal.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +20,7 @@ export class UsuariosService {
   }; 
   
  
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private _swal: SwalService ) { }
 
   /* 
   La función query se encarga de que la url sea facil de editar en todo el service,
@@ -75,7 +75,6 @@ export class UsuariosService {
   }
   ingresar(usuario){
     console.log('usuario: ', usuario);
-    
     /*
     usuario={
       email: string
@@ -91,7 +90,6 @@ export class UsuariosService {
         if(!responseData || !responseData.usuario || !responseData.usuario.id){
           return alert("Sus credenciales no coinciden con ninguna cuenta en el sistema.")
         }
-
         this.jwt = responseData.jwt;
         this.ingresado = responseData.usuario;
         this.fixLocalStorage();
@@ -101,16 +99,21 @@ export class UsuariosService {
   }
 
   logout(){
-    console.log("logout!")
-    setTimeout(()=>{
-      this.ingresado = {
-        id: 0,
-        nombre: ''
+    this._swal.logout().then((respuesta)=>{
+      if(respuesta.value){
+        console.log("logout!")
+        setTimeout(()=>{
+          this.ingresado = {
+            id: 0,
+            nombre: ''
+          }
+          this.jwt='';
+          this.resetLocalStorage();
+          this.router.navigateByUrl('/home');
+          this._swal.toast('Sesión cerrada.');
+        })
       }
-      this.jwt='';
-      this.resetLocalStorage();
-    })
-    this.router.navigateByUrl('/home');
+    });
   }
 
 }
