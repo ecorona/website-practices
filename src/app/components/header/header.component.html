@@ -40,6 +40,11 @@
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                     Clientes</a>
             </li>
+            <li class="nav-item active" *ngIf="_usuarios.ingresado.id">
+                <a class="nav-link" routerLink="/usuarios"  routerLinkActive="active" tabindex="-1">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    Usuarios</a>
+            </li>
             <li class="nav-item active" *ngIf="_clientes.ingresado.id">
                 <a class="nav-link" routerLink="/clientes/perfil"  routerLinkActive="active" tabindex="-1">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>

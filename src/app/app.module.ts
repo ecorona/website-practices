@@ -24,6 +24,7 @@ import { ClientesComponent } from './components/admin/clientes/clientes.componen
 import { LoginComponent } from './components/clientes/login/login.component';
 import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './components/clientes/perfil/perfil.component';
+import { UsuariosComponent } from './components/admin/usuarios/usuarios.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { PerfilComponent } from './components/clientes/perfil/perfil.component';
     LoginComponent,
     LoginUsuariosComponent,
     PerfilComponent,
+    UsuariosComponent,
   ],
   imports: [
     BrowserModule,

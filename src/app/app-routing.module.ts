@@ -12,6 +12,7 @@ import { ClientesComponent } from './components/admin/clientes/clientes.componen
 import { LoginComponent } from './components/clientes/login/login.component';
 import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './components/clientes/perfil/perfil.component';
+import { UsuariosComponent } from './components/admin/usuarios/usuarios.component'
 
 import { ClientesGuard } from './guards/clientes.guard';
 import { UsuariosGuard } from './guards/usuarios.guard';
@@ -58,6 +59,14 @@ const routes: Routes = [
   {
     path: 'clientes',
     component: ClientesComponent,
+    canActivate: [UsuariosGuard],
+    data: {
+      perfil: 'admin'
+    }
+  },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent,
     canActivate: [UsuariosGuard],
     data: {
       perfil: 'admin'

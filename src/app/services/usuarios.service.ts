@@ -70,6 +70,13 @@ export class UsuariosService {
     localStorage.removeItem('sesion');
     console.log("Sesion eliminada de localStorage");
   }
+
+  crearUsuario(usuario){
+    console.log('usuario: ', usuario);
+    
+    return this.query('usuarios/create', 'post', usuario);
+  }
+
   buscarusuarios() {
     return this.query('usuarios/get', 'get');
   }
@@ -114,6 +121,14 @@ export class UsuariosService {
         })
       }
     });
+  }
+
+  buscarUsuarios() {
+    return this.query('usuarios/get', 'get');
+  }
+
+  borrarUsuario(id){
+    return this.query('usuarios/delete', 'post', id);
   }
 
 }
