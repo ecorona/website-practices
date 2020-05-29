@@ -108,7 +108,7 @@ export class ClientesService {
         //la respuesta esta vacia si no existe con los datos proveidos
         //asi que evaluamos...
         if(!responseData || !responseData.cliente || !responseData.cliente.id){
-          return alert("Sus credenciales no coinciden con ninguna cuenta en el sistema.")
+          this._swal.toast('Sus credenciales no coinciden con ninguna cliente en el sistema.');
         }
 
         this.jwt = responseData.jwt;
