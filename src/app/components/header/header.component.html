@@ -21,39 +21,52 @@
                     Our Work</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/methology"  routerLinkActive="active" tabindex="-1">
+                <a class="nav-link" routerLink="/methology" routerLinkActive="active" tabindex="-1">
                     <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                     Methodology</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/whoweare"  routerLinkActive="active" tabindex="-1">
+                <a class="nav-link" routerLink="/whoweare" routerLinkActive="active" tabindex="-1">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     Who we are</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/blog"  routerLinkActive="active" tabindex="-1">
+                <a class="nav-link" routerLink="/blog" routerLinkActive="active" tabindex="-1">
                     <i class="fa fa-book" aria-hidden="true"></i>
                     Blog</a>
             </li>
-            <li class="nav-item active" *ngIf="_usuarios.ingresado && _usuarios.ingresado.id">
+            <li class="nav-item active" *ngIf="_usuarios.ingresado.id">
                 <a class="nav-link" routerLink="/clientes"  routerLinkActive="active" tabindex="-1">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                     Clientes</a>
             </li>
-            <li class="nav-item active" *ngIf="_clientes.ingresado && _clientes.ingresado.id">
+            <li class="nav-item active" *ngIf="_clientes.ingresado.id">
                 <a class="nav-link" routerLink="/clientes/perfil"  routerLinkActive="active" tabindex="-1">
                     <i class="fa fa-user-circle" aria-hidden="true"></i>
                     Mi perfil</a>
             </li>
         </ul>
-        <a class="btn btn-info btn-sm" *ngIf="!_clientes.ingresado || !_clientes.ingresado.id" routerLink="/registro">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-            Registro</a>
-        <button class="btn btn-info btn-sm" *ngIf="_clientes.ingresado && _clientes.ingresado.id" type="button" (click)="_clientes.logout()">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-            Cerrar Sesión</button>
-        <a class="btn btn-success btn-sm ml-2" *ngIf="!_clientes.ingresado || !_clientes.ingresado.id" routerLink="/login">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-            Iniciar sesión</a>
+        <div *ngIf="!_usuarios.ingresado.id">
+            <a class="btn btn-info btn-sm mr-2" *ngIf="_clientes.ingresado.id" routerLink="/clientes/perfil">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    Mi perfil de Cliente</a>
+            <a class="btn btn-info btn-sm" *ngIf="!_clientes.ingresado.id" routerLink="/registro">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Registro de Clientes</a>
+            <button class="btn btn-info btn-sm" *ngIf="_clientes.ingresado.id" type="button" (click)="_clientes.logout()">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Cerrar Sesión de Cliente</button>
+            <a class="btn btn-success btn-sm ml-2" *ngIf="!_clientes.ingresado.id"  routerLink="/login">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Iniciar sesión de Cliente</a>
+        </div>
+        <div *ngIf="_usuarios.ingresado.id">
+            <a class="btn btn-info btn-sm" routerLink="/usuarios/perfil">
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    Mi perfil de Usuario</a>
+            <button class="btn btn-info btn-sm ml-2" type="button" (click)="_usuarios.logout()">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Cerrar Sesión Usuario</button>
+        </div>
     </div>
 </nav>
