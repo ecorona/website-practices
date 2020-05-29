@@ -1,0 +1,61 @@
+<h1>usuarios</h1>
+<div class="row">
+    <div class="col-md-4">
+        
+        <form [formGroup]="signupForm" (ngSubmit)="agregarUsuario(signupForm.value)">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre">
+                        <div *ngIf="signupForm.get('nombre').hasError('required') && signupForm.get('nombre').touched"><h5>Este campo es requerido</h5></div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label>activo</label>
+                        <input type="checkbox" class="form-control" formControlName="activo">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <fieldset class="form-group">
+                        <label for="my-select">Perfil</label>
+                        <input type="text" class="form-control" formControlName="perfil">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" formControlName="email" placeholder="Email">
+                    </fieldset>
+                    <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched"><h5>Este debe ser email</h5></div>
+                    <div *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched"><h5>Este es requerido</h5></div>
+                </div>
+            </div>   
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control" formControlName="password" placeholder="Contraseña">
+                        <div *ngIf="signupForm.get('password').hasError('required') && signupForm.get('password').touched"><h5>Este campo es requerido</h5></div>
+                    </fieldset>
+                </div>
+            </div>
+            <button class="btn btn-success" type="submit">Agregar Usuario</button>
+        </form>
+        
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <ul>
+            <li *ngFor="let usuario of usuarios" >{{usuario.nombre}}  -  {{usuario.email}}<button class="btn btn-danger mt-2 float-right" *ngIf="usuario.id != _usuarios.ingresado.id" (click)="borrarUsuario(usuario)">Eliminar cliente</button></li>
+        </ul>
+    </div>
+        
+</div>
