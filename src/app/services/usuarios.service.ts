@@ -16,7 +16,7 @@ export class UsuariosService {
   jwt='';
   ingresado = {
     id:0,
-    name:''
+    nombre:''
   }; 
   
  
@@ -105,7 +105,7 @@ export class UsuariosService {
     setTimeout(()=>{
       this.ingresado = {
         id: 0,
-        name: ''
+        nombre: ''
       }
       this.jwt='';
       this.resetLocalStorage();

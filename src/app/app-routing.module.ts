@@ -60,7 +60,7 @@ const routes: Routes = [
     component: ClientesComponent,
     canActivate: [UsuariosGuard],
     data: {
-      perfil: 'usuario'
+      perfil: 'admin'
     }
   },
   {
