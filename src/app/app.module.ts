@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { InterceptorService } from './services/interceptor.service';
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 //componentes
 import { HeaderComponent } from './components/header/header.component';
 
@@ -46,7 +47,9 @@ import { PerfilComponent } from './components/clientes/perfil/perfil.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgbModule,
     ReactiveFormsModule,
+    SweetAlert2Module.forRoot(),
   ],
   providers: [
     {
