@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { SwalService } from 'src/app/services/swal.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-clientes',
@@ -8,13 +10,14 @@ import { ClientesService } from 'src/app/services/clientes.service';
 })
 export class ClientesComponent implements OnInit{
 
-  clientes = []
+  clientes = [] //este array contiene todos los clientes
 
   constructor(
     private _clientes: ClientesService,
+    private _swal: SwalService, //traemos el servicio para manipularlos
   ) {}
   ngOnInit(): void {
-    this.buscarClientes()
+    this.buscarClientes() //al inicio, traer los clientes
   }
  
    error = false;
@@ -24,11 +27,8 @@ export class ClientesComponent implements OnInit{
      this._clientes.buscarClientes().subscribe(resp =>{
       console.log("respueste de Get", resp );
       setTimeout(()=>{
-        this.clientes = resp
+        this.clientes = resp //insertarlos en el array
       })
-     
-      
-
 
      }, (err) => {
 
@@ -38,23 +38,32 @@ export class ClientesComponent implements OnInit{
      });
    }
 
-
    borrarCliente(cliente){
-     console.log("borrando cliente", cliente);
-     this._clientes.borrarCliente({
-       id: cliente.id
-     }).subscribe(resp =>{
-       console.log("cliente eliminado", resp);
-       
+    this._swal.borrarCliente().then((respuesta)=>{
+      if(respuesta.value){
 
-       
-     }, (err) => { //en caso de error en el http request
-      //mostrar el mensaje de error (html) cambiando la variable.
-      
-      console.log('error al borrar registro:', err);
-     });
-     
+        console.log("borrando cliente", cliente);
+        this._clientes.borrarCliente({
+          id: cliente.id
+        }).subscribe(clienteBorrado =>{
+          console.log("cliente eliminado", clienteBorrado);
+          if( clienteBorrado && clienteBorrado.id ){
+            // quitar del array de clientes, el que fue eliminado 
+            //buscar su indice en el array, por medio de su id
+            let idx = _.findIndex(this.clientes,{ id: clienteBorrado.id });
+            if( idx > -1 ){
+             setTimeout(()=>{
+               this.clientes.splice(idx,1);
+             })
+            }
+          }
+          this._swal.toast('Sesión cerrada.');
+        }, (err) => { //en caso de error en el http request
+         //mostrar el mensaje de error (html) cambiando la variable.
+         console.log('error al borrar registro:', err);
+        });
+      }
+
+    });
    }
-   
-   
 }
