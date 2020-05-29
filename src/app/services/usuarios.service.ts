@@ -110,7 +110,7 @@ export class UsuariosService {
           this.jwt='';
           this.resetLocalStorage();
           this.router.navigateByUrl('/home');
-          this._swal.toast('Sesión cerrada.');
+          this._swal.toast('Cliente borrado.');
         })
       }
     });

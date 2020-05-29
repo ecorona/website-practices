@@ -35,6 +35,19 @@ export class SwalService {
       reverseButtons: true
     });
   }
+  borrarCliente() {
+    return Swal.fire({
+      title: 'Está seguro?',
+      text: 'No podrá deshacer esta acción!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      // cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Borrar!',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    });
+  }
 
   logout() {
     return Swal.fire({

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { SwalService } from 'src/app/services/swal.service';
 
 @Component({
   selector: 'app-clientes',
@@ -12,6 +13,7 @@ export class ClientesComponent implements OnInit{
 
   constructor(
     private _clientes: ClientesService,
+    private _swal: SwalService,
   ) {}
   ngOnInit(): void {
     this.buscarClientes()
@@ -40,19 +42,22 @@ export class ClientesComponent implements OnInit{
 
 
    borrarCliente(cliente){
-     console.log("borrando cliente", cliente);
-     this._clientes.borrarCliente({
-       id: cliente.id
-     }).subscribe(resp =>{
-       console.log("cliente eliminado", resp);
-       
-
-       
-     }, (err) => { //en caso de error en el http request
-      //mostrar el mensaje de error (html) cambiando la variable.
+    
       
-      console.log('error al borrar registro:', err);
-     });
+      console.log("borrando cliente", cliente);
+      this._clientes.borrarCliente({
+        id: cliente.id
+      }).subscribe(resp =>{
+        console.log("cliente eliminado", resp);
+        
+ 
+        
+      }, (err) => { //en caso de error en el http request
+       //mostrar el mensaje de error (html) cambiando la variable.
+       
+       console.log('error al borrar registro:', err);
+      });
+   
      
    }
    

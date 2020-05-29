@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SwalService } from 'src/app/services/swal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class ClientesService {
   }; 
   
  
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,  private _swal: SwalService) { }
 
   /* 
   La función query se encarga de que la url sea facil de editar en todo el service,
@@ -88,7 +89,9 @@ export class ClientesService {
   }
 
   borrarCliente(id){
-    return this.query('clientes/delete', 'post', id);
+   // this._swal.borrarCliente().then((respuesta)=>{
+        return this.query('clientes/delete', 'post', id);
+   // });
   }
 
   ingresar(cliente){
@@ -117,18 +120,24 @@ export class ClientesService {
   }
 
   logout(){
-    console.log("logout!")
-    setTimeout(()=>{
-      this.ingresado = {
-        id: 0,
-        name: '',
-        user:'',
-        email:''
+    this._swal.logout().then((respuesta)=>{
+      if(respuesta.value){
+        
+        console.log("logout!")
+        setTimeout(()=>{
+          this.ingresado = {
+            id: 0,
+            name: '',
+            user:'',
+            email:''
+          }
+          this.jwt='';
+          this.resetLocalStorage();
+          this._swal.toast('Sesión cerrada.');
+        })
+        this.router.navigateByUrl('/home');
       }
-      this.jwt='';
-      this.resetLocalStorage();
-    })
-    this.router.navigateByUrl('/home');
+    });
   }
 
 }
