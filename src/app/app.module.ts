@@ -13,18 +13,18 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HeaderComponent } from './components/header/header.component';
 
 //paginas
-import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component';
-import { HomeComponent } from './components/home/home.component';
-import { OurWorkComponent } from './components/our-work/our-work.component';
-import { MethologyComponent } from './components/methology/methology.component';
-import { WhoWAreComponent } from './components/who-ware/who-ware.component';
-import { BlogComponent } from './components/blog/blog.component';
-import { RegistroComponent } from './components/clientes/registro/registro.component';
-import { ClientesComponent } from './components/admin/clientes/clientes.component';
-import { LoginComponent } from './components/clientes/login/login.component';
-import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/login-usuarios.component';
-import { PerfilComponent } from './components/clientes/perfil/perfil.component';
-import { UsuariosComponent } from './components/admin/usuarios/usuarios.component';
+import { WhatWeDoComponent } from './pages/what-we-do/what-we-do.component';
+import { HomeComponent } from './pages/home/home.component';
+import { OurWorkComponent } from './pages/our-work/our-work.component';
+import { MethologyComponent } from './pages/methology/methology.component';
+import { WhoWAreComponent } from './pages/who-ware/who-ware.component';
+import { BlogComponent } from './pages/blog/blog.component';
+import { RegistroComponent } from './pages/clientes/registro/registro.component';
+import { ClientesComponent } from './pages/admin/clientes/clientes.component';
+import { LoginComponent } from './pages/clientes/login/login.component';
+import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
+import { PerfilComponent } from './pages/clientes/perfil/perfil.component';
+import { UsuariosComponent } from './pages/admin/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
