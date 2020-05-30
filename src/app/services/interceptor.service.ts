@@ -5,7 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHeaders,
-  HttpErrorResponse
+  HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -14,18 +14,19 @@ import { UsuariosService } from './usuarios.service';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InterceptorService implements HttpInterceptor {
-
   constructor(
     private _usuarios: UsuariosService,
     private _clientes: ClientesService,
     private router: Router
-    ) { }
+  ) {}
 
-  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
+  intercept(
+    req: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     let request = req;
 
     // inyectar la llave en los headers de las solicitudes...
@@ -33,7 +34,7 @@ export class InterceptorService implements HttpInterceptor {
       request = req.clone({
         setHeaders: {
           authorization: 'Bearer ' + (this._clientes.jwt || this._usuarios.jwt),
-        }
+        },
       });
     }
 
@@ -41,12 +42,11 @@ export class InterceptorService implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.error('Error interceptor:', error);
         if (error.status === 401) {
-          alert("Debe iniciar sesión para acceder a esta parte.");
+          alert('Debe iniciar sesión para acceder a esta parte.');
           this.router.navigateByUrl('/login');
         }
         return throwError(error);
       })
     );
   }
-
 }

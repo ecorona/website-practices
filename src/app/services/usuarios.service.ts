@@ -4,25 +4,38 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SwalService } from 'src/app/services/swal.service';
+import { UsuarioModel } from 'src/app/interfaces/models';
+import { LoginData } from '../interfaces/interfaces';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class UsuariosService {
-
   //Variable local utilizada para conectar al server, extraida del environment
   private SERVER = environment.server;
 
-  jwt='';
-  ingresado = {
-    id:0,
-    nombre:''
-  }; 
-  
- 
-  constructor(private http: HttpClient, private router: Router, private _swal: SwalService ) { }
+  jwt = '';
+  ingresado: UsuarioModel;
 
-  /* 
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private _swal: SwalService
+  ) {
+    this.resetIngresado();
+  }
+
+  resetIngresado() {
+    this.ingresado = {
+      id: 0,
+      nombre: '',
+      email: '',
+      perfil: '',
+      activo: false,
+    };
+  }
+
+  /*
   La función query se encarga de que la url sea facil de editar en todo el service,
   El resto del service, utilizará esta funcion para hacer las solicitudes.
 
@@ -44,46 +57,48 @@ export class UsuariosService {
     }
   }
 
-
   //almacenar el localstorage los valores jwt e ingresado
-  fixLocalStorage(){
-    localStorage.setItem('sesion', JSON.stringify({jwt:this.jwt, usuario:this.ingresado}));
-    console.log("Sesion almacenada en localStorage");
+  fixLocalStorage() {
+    localStorage.setItem(
+      'sesion',
+      JSON.stringify({ jwt: this.jwt, usuario: this.ingresado })
+    );
+    console.log('Sesion almacenada en localStorage');
   }
 
-  loadLocalStorage(){
-    console.log("Cargando sesion de localStorage");
+  loadLocalStorage() {
+    console.log('Cargando sesion de localStorage');
     let sesion = localStorage.getItem('sesion');
-    if(sesion){
+    if (sesion) {
       let sesionObj = JSON.parse(sesion);
-      if(sesion && sesionObj.usuario && sesionObj.jwt){
-        console.log("Sesión de usuario cargada de localStorage");
-        this.jwt=sesionObj.jwt;
-        this.ingresado=sesionObj.usuario;
+      if (sesion && sesionObj.usuario && sesionObj.jwt) {
+        console.log('Sesión de usuario cargada de localStorage');
+        this.jwt = sesionObj.jwt;
+        this.ingresado = sesionObj.usuario;
         return;
       }
     }
-    console.log("No se encontró una sesión en localStorage")
+    console.log('No se encontró una sesión en localStorage');
   }
 
-  resetLocalStorage(){
+  resetLocalStorage() {
     localStorage.removeItem('sesion');
-    console.log("Sesion eliminada de localStorage");
+    console.log('Sesion eliminada de localStorage');
   }
 
-  crearUsuario(usuario){
+  crearUsuario(usuario: UsuarioModel) {
     console.log('usuario: ', usuario);
-    
+
     return this.query('usuarios/create', 'post', usuario);
   }
 
   buscarusuarios() {
     return this.query('usuarios/get', 'get');
   }
-  ingresar(usuario){
+  ingresar(usuario: LoginData) {
     console.log('usuario: ', usuario);
     /*
-    usuario={
+    LoginData = {
       email: string
       password: string
     }
@@ -94,31 +109,33 @@ export class UsuariosService {
         console.log('respuesta ingreso:', responseData);
         //la respuesta esta vacia si no existe con los datos proveidos
         //asi que evaluamos...
-        if(!responseData || !responseData.usuario || !responseData.usuario.id){
-          return alert("Sus credenciales no coinciden con ninguna cuenta en el sistema.")
+        if (
+          !responseData ||
+          !responseData.usuario ||
+          !responseData.usuario.id
+        ) {
+          return alert(
+            'Sus credenciales no coinciden con ninguna cuenta en el sistema.'
+          );
         }
         this.jwt = responseData.jwt;
         this.ingresado = responseData.usuario;
         this.fixLocalStorage();
-        
       })
     );
   }
 
-  logout(){
-    this._swal.logout().then((respuesta)=>{
-      if(respuesta.value){
-        console.log("logout!")
-        setTimeout(()=>{
-          this.ingresado = {
-            id: 0,
-            nombre: ''
-          }
-          this.jwt='';
+  logout() {
+    this._swal.logout().then((respuesta) => {
+      if (respuesta.value) {
+        console.log('logout!');
+        setTimeout(() => {
+          this.resetIngresado();
+          this.jwt = '';
           this.resetLocalStorage();
           this.router.navigateByUrl('/home');
           this._swal.toast('Cliente borrado.');
-        })
+        });
       }
     });
   }
@@ -127,8 +144,7 @@ export class UsuariosService {
     return this.query('usuarios/get', 'get');
   }
 
-  borrarUsuario(id){
+  borrarUsuario(id) {
     return this.query('usuarios/delete', 'post', id);
   }
-
 }

@@ -1,17 +1,15 @@
-import { Injectable  } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class BackgroundService {
-
-  constructor() { }
+  constructor() {}
 
   clase: String = '';
-  setClase(clase: String ){
-    setTimeout(()=>{
+  setClase(clase: String) {
+    setTimeout(() => {
       this.clase = clase;
-    })
+    });
   }
 }

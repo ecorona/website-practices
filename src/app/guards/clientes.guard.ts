@@ -1,31 +1,32 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
 import { ClientesService } from '../services/clientes.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClientesGuard implements CanActivate {
+  constructor(private _clientes: ClientesService, private router: Router) {}
 
-  constructor(
-    private _clientes: ClientesService,
-    private router: Router,
-    ) { }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean {
     console.log('guard, accesando a ruta:', route);
     console.log('state:', state);
 
     // tiene cliente y un id?
     if (this._clientes.ingresado.id && this._clientes.jwt) {
       return true; //si puede entrar a la ruta
-    }else { //no puede entrar y lo mandamos a login
+    } else {
+      //no puede entrar y lo mandamos a login
       this.router.navigateByUrl('/login');
       return false;
     }
-
-
   }
-
 }
