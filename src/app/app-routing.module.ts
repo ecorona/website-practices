@@ -13,6 +13,7 @@ import { LoginComponent } from './pages/clientes/login/login.component';
 import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './pages/clientes/perfil/perfil.component';
 import { UsuariosComponent } from './pages/admin/usuarios/usuarios.component';
+import { ProductosComponent } from './pages/admin/productos/productos.component';
 
 import { ClientesGuard } from './guards/clientes.guard';
 import { UsuariosGuard } from './guards/usuarios.guard';
@@ -66,6 +67,14 @@ const routes: Routes = [
   {
     path: 'usuarios',
     component: UsuariosComponent,
+    canActivate: [UsuariosGuard],
+    data: {
+      perfil: 'admin',
+    },
+  },
+  {
+    path: 'usuarios/productos',
+    component: ProductosComponent,
     canActivate: [UsuariosGuard],
     data: {
       perfil: 'admin',

@@ -25,7 +25,11 @@ import { LoginComponent } from './pages/clientes/login/login.component';
 import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './pages/clientes/perfil/perfil.component';
 import { UsuariosComponent } from './pages/admin/usuarios/usuarios.component';
+
 import { CategoriasComponent } from './components/categorias/categorias.component';
+=======
+import { ProductosComponent } from './pages/admin/productos/productos.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
     LoginUsuariosComponent,
     PerfilComponent,
     UsuariosComponent,
+
     CategoriasComponent,
+
+    ProductosComponent,
+
   ],
   imports: [
     BrowserModule,
