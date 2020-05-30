@@ -1,0 +1,85 @@
+<h1>productos</h1>
+<div class="row">
+  <div class="col-md-4">
+    <form
+      [formGroup]="productoForm"
+      (ngSubmit)="guardarProducto(productoForm.value)"
+    >
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <fieldset class="form-group">
+            <label>Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="nombre"
+              placeholder="Nombre"
+            />
+            <div
+              *ngIf="
+                productoForm.get('nombre').hasError('required') &&
+                productoForm.get('nombre').touched
+              "
+            >
+              <h5>Este campo es requerido</h5>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <fieldset class="form-group">
+            <label>categoría</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="categoria"
+              placeholder="Categoría"
+            />
+          </fieldset>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <fieldset class="form-group">
+            <label for="precio">Precio</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="precio"
+              placeholder="$$$"
+            />
+          </fieldset>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <fieldset class="form-group">
+            <label>Descuento</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="descuento"
+              placeholder="Descuento"
+            />
+          </fieldset>
+        </div>
+      </div>
+      <button class="btn btn-success" type="submit">Agregar producto</button>
+    </form>
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <ul>
+      <li *ngFor="let producto of productos" class="mb-5">
+        {{ producto.nombre }} - {{ producto.email
+        }}<button
+          class="btn btn-danger mt-2 float-right"
+          (click)="borrarProducto(producto)"
+        >
+          Eliminar Producto
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

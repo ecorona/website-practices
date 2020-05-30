@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../../../services/usuarios.service';
 import * as _ from 'lodash';
-import { SwalService } from 'src/app/services/swal.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -18,7 +17,6 @@ export class UsuariosComponent implements OnInit {
   constructor(
     public _usuarios: UsuariosService,
     private router: Router,
-    private _swal: SwalService,
     private _builder: FormBuilder
   ) {
     this.signupForm = this._builder.group({

@@ -7,7 +7,6 @@ export class UsuarioModel {
   activo: boolean;
   password?: string;
   clearPassword?: string;
-  papas: string;
 }
 
 export class ClienteModel {
@@ -20,7 +19,14 @@ export class ClienteModel {
   clearPassword?: string;
 }
 
+export class ProductoModel {
+  nombre: string;
+  categoria: string;
+  precio: number;
+  descuento: number;
+}
+
 export class ResponseLoginUser {
   jwt: string;
-  usuarios: [UsuarioModel];
+  usuario: UsuarioModel;
 }
