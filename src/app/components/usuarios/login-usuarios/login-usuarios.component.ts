@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 import { BackgroundService } from '../../../services/background.service';
 import { UsuariosService } from '../../../services/usuarios.service';
 import { Router } from '@angular/router';
+import { LoginData } from 'src/app/interfaces/interfaces';
+import { UsuarioModel } from 'src/app/interfaces/models';
 @Component({
   selector: 'app-login-usuarios',
   templateUrl: './login-usuarios.component.html',
@@ -33,16 +35,15 @@ export class LoginUsuariosComponent implements OnInit {
 
   error = false;
 
-
-  ingresar(usuario){
+  ingresar(usuario: LoginData){
     console.log("Va a ingresar:", usuario);
     this._usuarios.ingresar({ //lanzar solicitud desde el service, recordemos que regresará un http request
       email:     usuario.email,
       password:  usuario.password
-    }).subscribe(respuesta => { //no suscribimos a la respuesta del http request
+    }).subscribe((respuesta: UsuarioModel) => { //no suscribimos a la respuesta del http request
       console.log("respuesta ingresar()", respuesta);
       
-      //ya tenemos cliente!
+      //ya tenemos usuario!
       //ahora que hacemos?
       if(this._usuarios.jwt){
         this.router.navigateByUrl('/home');
