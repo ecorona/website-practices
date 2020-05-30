@@ -4,16 +4,12 @@ import { BackgroundService } from 'src/app/services/background.service';
 @Component({
   selector: 'app-methology',
   templateUrl: './methology.component.html',
-  styleUrls: ['./methology.component.scss']
+  styleUrls: ['./methology.component.scss'],
 })
 export class MethologyComponent implements OnInit {
+  constructor(private background: BackgroundService) {}
 
-  constructor(private background: BackgroundService) {
-
+  ngOnInit(): void {
+    this.background.setClase('methodology');
   }
-
- ngOnInit(): void {
-   this.background.setClase('methodology')
- }
-
 }

@@ -2,24 +2,24 @@ import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SwalService {
+  constructor() {}
 
-  constructor() { }
-
-  toast(icon, title?){ //si se pone un solo parametro, es el titulo, y por default, usar icon success
-    if(!title && icon){
-      title=icon;
-      icon='success';
+  toast(icon, title?) {
+    //si se pone un solo parametro, es el titulo, y por default, usar icon success
+    if (!title && icon) {
+      title = icon;
+      icon = 'success';
     }
     Swal.fire({
       position: 'top-end',
       icon: icon,
       title: title,
       showConfirmButton: false,
-      timer: 2000
-    })
+      timer: 2000,
+    });
   }
 
   borrarRegistro() {
@@ -32,7 +32,7 @@ export class SwalService {
       // cancelButtonColor: '#d33',
       confirmButtonText: 'Si, Borrar!',
       cancelButtonText: 'Cancelar',
-      reverseButtons: true
+      reverseButtons: true,
     });
   }
   borrarCliente() {
@@ -45,7 +45,7 @@ export class SwalService {
       // cancelButtonColor: '#d33',
       confirmButtonText: 'Si, Borrar!',
       cancelButtonText: 'Cancelar',
-      reverseButtons: true
+      reverseButtons: true,
     });
   }
 
@@ -59,14 +59,14 @@ export class SwalService {
       // cancelButtonColor: '#d33',
       confirmButtonText: 'Si, Cerrar!',
       cancelButtonText: 'Cancelar',
-      reverseButtons: true
+      reverseButtons: true,
     });
   }
   borradoExitoso() {
     return Swal.fire({
       title: 'Borrado!',
       text: 'El registro ha sido eliminado',
-      icon: 'success'
+      icon: 'success',
     });
   }
 
@@ -80,7 +80,7 @@ export class SwalService {
       // cancelButtonColor: '#d33',
       confirmButtonText: 'Si, Guardar!',
       cancelButtonText: 'Cancelar',
-      reverseButtons: true
+      reverseButtons: true,
     });
   }
 
@@ -88,9 +88,7 @@ export class SwalService {
     return Swal.fire({
       title: 'Guardado!',
       text: 'Los datos han sido guardados correctamente!',
-      icon: 'success'
+      icon: 'success',
     });
   }
-
-
 }

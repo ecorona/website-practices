@@ -15,7 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 //paginas
 import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component';
 import { HomeComponent } from './components/home/home.component';
-import { OurWorkComponent } from './components/our-work/our-work.component'
+import { OurWorkComponent } from './components/our-work/our-work.component';
 import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { BlogComponent } from './components/blog/blog.component';
@@ -25,7 +25,6 @@ import { LoginComponent } from './components/clientes/login/login.component';
 import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './components/clientes/perfil/perfil.component';
 import { UsuariosComponent } from './components/admin/usuarios/usuarios.component';
-
 
 @NgModule({
   declarations: [
@@ -57,9 +56,9 @@ import { UsuariosComponent } from './components/admin/usuarios/usuarios.componen
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,
-      multi: true
+      multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

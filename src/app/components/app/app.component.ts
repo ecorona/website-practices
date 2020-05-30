@@ -6,15 +6,14 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent{
-
-  constructor( 
+export class AppComponent {
+  constructor(
     public background: BackgroundService,
     private _clientes: ClientesService,
     private _usuarios: UsuariosService
-    ){
+  ) {
     this.initializeApp();
   }
   initializeApp() {
@@ -23,6 +22,4 @@ export class AppComponent{
     this._clientes.loadLocalStorage();
     this._usuarios.loadLocalStorage();
   }
-
-
 }

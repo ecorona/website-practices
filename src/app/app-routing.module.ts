@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { WhatWeDoComponent } from './components/what-we-do/what-we-do.component';
 import { HomeComponent } from './components/home/home.component';
-import { OurWorkComponent } from './components/our-work/our-work.component'
+import { OurWorkComponent } from './components/our-work/our-work.component';
 import { MethologyComponent } from './components/methology/methology.component';
 import { WhoWAreComponent } from './components/who-ware/who-ware.component';
 import { BlogComponent } from './components/blog/blog.component';
@@ -12,44 +12,43 @@ import { ClientesComponent } from './components/admin/clientes/clientes.componen
 import { LoginComponent } from './components/clientes/login/login.component';
 import { LoginUsuariosComponent } from './components/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './components/clientes/perfil/perfil.component';
-import { UsuariosComponent } from './components/admin/usuarios/usuarios.component'
+import { UsuariosComponent } from './components/admin/usuarios/usuarios.component';
 
 import { ClientesGuard } from './guards/clientes.guard';
 import { UsuariosGuard } from './guards/usuarios.guard';
 
-
 const routes: Routes = [
   {
     path: 'whatwedo',
-    component: WhatWeDoComponent
+    component: WhatWeDoComponent,
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'ourwork',
-    component: OurWorkComponent
+    component: OurWorkComponent,
   },
   {
     path: 'methology',
-    component: MethologyComponent
+    component: MethologyComponent,
   },
   {
     path: 'whoweare',
-    component: WhoWAreComponent
+    component: WhoWAreComponent,
   },
   {
     path: 'blog',
-    component: BlogComponent
+    component: BlogComponent,
   },
   {
     path: 'registro',
-    component: RegistroComponent
+    component: RegistroComponent,
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   /*{
     path: 'miperfil',
@@ -61,16 +60,16 @@ const routes: Routes = [
     component: ClientesComponent,
     canActivate: [UsuariosGuard],
     data: {
-      perfil: 'admin'
-    }
+      perfil: 'admin',
+    },
   },
   {
     path: 'usuarios',
     component: UsuariosComponent,
     canActivate: [UsuariosGuard],
     data: {
-      perfil: 'admin'
-    }
+      perfil: 'admin',
+    },
   },
   {
     path: 'usuarios/login',
@@ -79,16 +78,16 @@ const routes: Routes = [
   {
     path: 'clientes/perfil',
     component: PerfilComponent,
-    canActivate: [ClientesGuard]
+    canActivate: [ClientesGuard],
   },
   {
-
-    path:'**', redirectTo: 'home' //cualquier otra ruta, mandar a home (DEFAULT)
-  }
+    path: '**',
+    redirectTo: 'home', //cualquier otra ruta, mandar a home (DEFAULT)
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
