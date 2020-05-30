@@ -1,31 +1,31 @@
-.navbar{
-    background-color: rgba($color: #1fc32d, $alpha: .4);
+.navbar {
+  background-color: rgba($color: #1fc32d, $alpha: 0.4);
 }
 
-.logo{
-    margin-top: 25px;
-    height: 50px;
-    width: 150px;
+.logo {
+  margin-top: 25px;
+  height: 50px;
+  width: 150px;
 }
 
-.logoCont{
-    margin-left: 150px;
+.logoCont {
+  margin-left: 150px;
 }
 
-.navCont{
-    float: right;
+.navCont {
+  float: right;
 }
 
-.navItem{
-    float: left;
-    text-decoration: none;
-    margin-left: 50px;
-    color: white;
-    text-decoration: none;
-    list-style-type: none;
-    font-size: 22px;
+.navItem {
+  float: left;
+  text-decoration: none;
+  margin-left: 50px;
+  color: white;
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 22px;
 }
 
-.navItem:hover{
-    color: lightgray;
+.navItem:hover {
+  color: lightgray;
 }
