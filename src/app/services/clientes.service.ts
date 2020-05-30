@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SwalService } from 'src/app/services/swal.service';
+import { ClienteModel } from '../interfaces/models';
 
 @Injectable({
   providedIn: 'root',
@@ -13,19 +14,24 @@ export class ClientesService {
   private SERVER = environment.server;
 
   jwt = '';
-  ingresado = {
-    id: 0,
-    name: '',
-    user: '',
-    email: '',
-  };
+
+  ingresado: ClienteModel;
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private _swal: SwalService
-  ) {}
+  ) {
+    this.resetCliente();
+  }
 
+  resetCliente() {
+    this.ingresado = {
+      name: '',
+      user: '',
+      email: '',
+    };
+  }
   /*
   La función query se encarga de que la url sea facil de editar en todo el service,
   El resto del service, utilizará esta funcion para hacer las solicitudes.
@@ -132,12 +138,7 @@ export class ClientesService {
       if (respuesta.value) {
         console.log('logout!');
         setTimeout(() => {
-          this.ingresado = {
-            id: 0,
-            name: '',
-            user: '',
-            email: '',
-          };
+          this.resetCliente();
           this.jwt = '';
           this.resetLocalStorage();
           this._swal.toast('Sesión cerrada.');

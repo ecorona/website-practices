@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SwalService } from 'src/app/services/swal.service';
-import { UsuarioModel } from 'src/app/interfaces/models';
+import { UsuarioModel, ResponseLoginUser } from 'src/app/interfaces/models';
 import { LoginData } from '../interfaces/interfaces';
 
 @Injectable({
@@ -95,6 +95,7 @@ export class UsuariosService {
   buscarusuarios() {
     return this.query('usuarios/get', 'get');
   }
+
   ingresar(usuario: LoginData) {
     console.log('usuario: ', usuario);
     /*
@@ -105,7 +106,7 @@ export class UsuariosService {
     */
     return this.query('acceso/usuarios/login', 'post', usuario).pipe(
       // atrapar la respuesta y almacenar el jwt en localstorage
-      map((responseData: any) => {
+      map((responseData: ResponseLoginUser) => {
         console.log('respuesta ingreso:', responseData);
         //la respuesta esta vacia si no existe con los datos proveidos
         //asi que evaluamos...
@@ -134,7 +135,7 @@ export class UsuariosService {
           this.jwt = '';
           this.resetLocalStorage();
           this.router.navigateByUrl('/home');
-          this._swal.toast('Cliente borrado.');
+          this._swal.toast('Su sesión se ha cerrado.');
         });
       }
     });
