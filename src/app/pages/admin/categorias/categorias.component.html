@@ -1,0 +1,47 @@
+<h1>categorias</h1>
+<div class="row">
+  <div class="col-md-4">
+    <form
+      [formGroup]="categoriaForm"
+      (ngSubmit)="guardarCategoria(categoriaForm.value)"
+    >
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <fieldset class="form-group">
+            <label>Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="nombre"
+              placeholder="Nombre"
+            />
+            <div
+              *ngIf="
+                categoriaForm.get('nombre').hasError('required') &&
+                categoriaForm.get('nombre').touched
+              "
+            >
+              <h5>Este campo es requerido</h5>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <button class="btn btn-success" type="submit">Agregar categoria</button>
+    </form>
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <ul>
+      <li *ngFor="let categoria of categorias" class="mb-5">
+        {{ categoria.nombre }} - {{ categoria.email
+        }}<button
+          class="btn btn-danger mt-2 float-right"
+          (click)="borrarCategoria(categoria)"
+        >
+          Eliminar categoria
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
