@@ -14,6 +14,7 @@ import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-us
 import { PerfilComponent } from './pages/clientes/perfil/perfil.component';
 import { UsuariosComponent } from './pages/admin/usuarios/usuarios.component';
 import { ProductosComponent } from './pages/admin/productos/productos.component';
+import { CategoriasComponent } from './pages/admin/categorias/categorias.component';
 
 import { ClientesGuard } from './guards/clientes.guard';
 import { UsuariosGuard } from './guards/usuarios.guard';
@@ -75,6 +76,14 @@ const routes: Routes = [
   {
     path: 'usuarios/productos',
     component: ProductosComponent,
+    canActivate: [UsuariosGuard],
+    data: {
+      perfil: 'admin',
+    },
+  },
+  {
+    path: 'usuarios/categorias',
+    component: CategoriasComponent,
     canActivate: [UsuariosGuard],
     data: {
       perfil: 'admin',

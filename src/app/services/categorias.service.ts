@@ -3,12 +3,11 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SwalService } from 'src/app/services/swal.service';
-import { ProductoModel } from 'src/app/interfaces/models';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductosService {
+export class CategoriasService {
   private SERVER = environment.server;
 
   jwt = '';
@@ -24,17 +23,17 @@ export class ProductosService {
     }
   }
 
-  guardarProducto(producto) {
-    console.log('porducto: ', producto);
+  guardarCategoria(categoria) {
+    console.log('porducto: ', categoria);
 
-    return this.query('admin/productos/save', 'post', producto);
+    return this.query('admin/categorias/save', 'post', categoria);
   }
 
-  buscarProductos() {
-    return this.query('admin/productos/get', 'get');
+  buscarCategorias() {
+    return this.query('admin/categorias/get', 'get');
   }
 
-  borrarProducto(id) {
-    return this.query('admin/productos/delete', 'post', id);
+  borrarCategoria(id) {
+    return this.query('admin/categorias/delete', 'post', id);
   }
 }
