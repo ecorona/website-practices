@@ -13,8 +13,9 @@ import { LoginComponent } from './pages/clientes/login/login.component';
 import { LoginUsuariosComponent } from './pages/usuarios/login-usuarios/login-usuarios.component';
 import { PerfilComponent } from './pages/clientes/perfil/perfil.component';
 import { UsuariosComponent } from './pages/admin/usuarios/usuarios.component';
-import { ProductosComponent } from './pages/admin/productos/productos.component';
+import { AdminProductosComponent } from './pages/admin/productos/adminProductos.component';
 import { CategoriasComponent } from './pages/admin/categorias/categorias.component';
+import { ProductosComponent } from './pages/productos/productos.component';
 
 import { ClientesGuard } from './guards/clientes.guard';
 import { UsuariosGuard } from './guards/usuarios.guard';
@@ -52,6 +53,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+  {
+    path: 'productos',
+    component: ProductosComponent,
+  },
   /*{
     path: 'miperfil',
     component: LoginComponent,
@@ -75,7 +80,7 @@ const routes: Routes = [
   },
   {
     path: 'usuarios/productos',
-    component: ProductosComponent,
+    component: AdminProductosComponent,
     canActivate: [UsuariosGuard],
     data: {
       perfil: 'admin',

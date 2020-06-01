@@ -28,7 +28,7 @@ import { UsuariosComponent } from './pages/admin/usuarios/usuarios.component';
 
 import { CategoriasComponent } from './pages/admin/categorias/categorias.component';
 
-import { ProductosComponent } from './pages/admin/productos/productos.component';
+import { ProductosComponent } from './pages/productos/productos.component';
 
 @NgModule({
   declarations: [

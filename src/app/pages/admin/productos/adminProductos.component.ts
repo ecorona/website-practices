@@ -9,7 +9,7 @@ import { BackgroundService } from 'src/app/services/background.service';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.scss'],
 })
-export class ProductosComponent implements OnInit {
+export class AdminProductosComponent implements OnInit {
   productoForm: FormGroup;
 
   productos = [];
@@ -32,17 +32,17 @@ export class ProductosComponent implements OnInit {
     this.background.setClase('productos');
   }
   buscarProductos() {
-    console.log('buscando usuarios');
+    console.log('buscando productos');
     this._productos.buscarProductos().subscribe(
       (resp) => {
-        console.log('respueste de Get', resp);
+        console.log('respuesta de Get', resp);
         setTimeout(() => {
           this.productos = resp; //insertarlos en el array
         });
       },
       (err) => {
         this.error = true;
-        console.log('error traer registros', err);
+        console.log('error traer productos', err);
       }
     );
   }
