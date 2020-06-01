@@ -37,4 +37,7 @@ export class ProductosService {
   borrarProducto(id) {
     return this.query('admin/productos/delete', 'post', id);
   }
+  buscarProductosFront() {
+    return this.query('productos/get', 'get');
+  }
 }
