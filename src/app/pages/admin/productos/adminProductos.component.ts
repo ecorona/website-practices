@@ -42,6 +42,7 @@ export class AdminProductosComponent implements OnInit {
       (resp) => {
         console.log('respueste de Get Categorias', resp);
         setTimeout(() => {
+          console.log('id de categorias', resp.id);
           this.categorias = resp; //insertarlos en el array
         });
       },
