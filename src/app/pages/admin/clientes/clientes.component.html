@@ -1,6 +1,10 @@
 <p>clientes works!</p>
 <h1>clientes</h1>
 <ul>
-  <li *ngFor="let cliente of clientes">{{cliente.name}}_{{cliente.email}}<button class="btn btn-danger mt-2"
-      (click)="borrarCliente(cliente)">Eliminar cliente</button></li>
+  <li *ngFor="let cliente of clientes">
+    {{ cliente.name }}_{{ cliente.email }}-{{ cliente.user }}-
+    <button class="btn btn-danger mt-2" (click)="borrarCliente(cliente)">
+      Eliminar cliente
+    </button>
+  </li>
 </ul>

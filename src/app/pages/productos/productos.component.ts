@@ -7,19 +7,18 @@ import { ProductosService } from 'src/app/services/productos.service';
   styleUrls: ['./productos.component.scss'],
 })
 export class ProductosComponent implements OnInit {
-  productos = [];
-
+  productos: [];
   constructor(public _productos: ProductosService) {}
 
   ngOnInit(): void {
-    this.buscarProductosFront();
+    this.buscarProductos();
   }
 
   error = false;
 
-  buscarProductosFront() {
+  buscarProductos() {
     console.log('buscando productos');
-    this._productos.buscarProductosFront().subscribe(
+    this._productos.buscarProductos().subscribe(
       (resp) => {
         console.log('respuesta de Get', resp);
         setTimeout(() => {

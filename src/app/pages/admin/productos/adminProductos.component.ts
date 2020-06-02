@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductosService } from 'src/app/services/productos.service';
 import * as _ from 'lodash';
 import { BackgroundService } from 'src/app/services/background.service';
+import { CategoriasService } from 'src/app/services/categorias.service';
 
 @Component({
   selector: 'app-productos',
@@ -11,13 +12,15 @@ import { BackgroundService } from 'src/app/services/background.service';
 })
 export class AdminProductosComponent implements OnInit {
   productoForm: FormGroup;
+  categorias: [];
 
   productos = [];
 
   constructor(
     private background: BackgroundService,
     public _productos: ProductosService,
-    private _builder: FormBuilder
+    private _builder: FormBuilder,
+    public _categorias: CategoriasService
   ) {
     this.productoForm = this._builder.group({
       nombre: ['', Validators.required],
@@ -29,13 +32,31 @@ export class AdminProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.buscarProductos(); //al inicio, traer los productos
+    this.buscarCategorias();
     this.background.setClase('productos');
   }
+
+  buscarCategorias() {
+    console.log('buscando usuarios');
+    this._categorias.buscarCategorias().subscribe(
+      (resp) => {
+        console.log('respueste de Get Categorias', resp);
+        setTimeout(() => {
+          this.categorias = resp; //insertarlos en el array
+        });
+      },
+      (err) => {
+        this.error = true;
+        console.log('error traer registros', err);
+      }
+    );
+  }
+
   buscarProductos() {
     console.log('buscando productos');
     this._productos.buscarProductos().subscribe(
       (resp) => {
-        console.log('respuesta de Get', resp);
+        console.log('respuesta de Get Productos', resp);
         setTimeout(() => {
           this.productos = resp; //insertarlos en el array
         });
