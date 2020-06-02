@@ -30,12 +30,14 @@
         <div class="col-md-6">
           <fieldset class="form-group">
             <label>categoría</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="categoria"
-              placeholder="Categoría"
-            />
+            <ng-select
+              [items]="categorias"
+              bindLabel="nombre"
+              placeholder="Selecciona una categoría"
+              appendTo="body"
+              multiple="false"
+            >
+            </ng-select>
           </fieldset>
         </div>
       </div>
@@ -72,7 +74,7 @@
   <div class="col-md-4">
     <ul>
       <li *ngFor="let producto of productos" class="mb-5">
-        {{ producto.nombre }} - {{ producto.email
+        {{ producto.nombre }} - {{ producto.precio
         }}<button
           class="btn btn-danger mt-2 float-right"
           (click)="borrarProducto(producto)"

@@ -1,16 +1,21 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3 mt-5" *ngFor="let producto of productos">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap" />
+      <!-- <img class="card-img-top" src="..." alt="Card image cap" /> -->
       <div class="card-body">
-        <h5 class="card-title"></h5>
+        <h5 class="card-title">{{ producto.nombre }}</h5>
 
-        <ul class="card-text">
-          <li>{{productos.precio}</li>
-          <li>{{productos.descuento}</li>
-        </ul>
+        <div class="card-text">
+          <span class="float-right" *ngIf="producto.descuento > 0">
+            ${{
+              producto.precio - (producto.precio / 100) * producto.descuento
+            }}
+          </span>
+          <span *ngIf="producto.descuento <= 0">{{ producto.precio }}</span>
+          <span class="ml-5">{{ producto.descuento }}%</span>
+        </div>
 
-        <a href="#" class="btn btn-primary">Comprar</a>
+        <a class="btn btn-primary">Comprar</a>
       </div>
     </div>
   </div>

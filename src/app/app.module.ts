@@ -5,6 +5,7 @@ import { AppComponent } from './components/app/app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { InterceptorService } from './services/interceptor.service';
 
@@ -29,6 +30,7 @@ import { UsuariosComponent } from './pages/admin/usuarios/usuarios.component';
 import { CategoriasComponent } from './pages/admin/categorias/categorias.component';
 
 import { ProductosComponent } from './pages/productos/productos.component';
+import { AdminProductosComponent } from './pages/admin/productos/adminProductos.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
     PerfilComponent,
     UsuariosComponent,
     ProductosComponent,
+    AdminProductosComponent,
     CategoriasComponent,
   ],
   imports: [
@@ -57,6 +60,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
     NgbModule,
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
+    NgSelectModule,
   ],
   providers: [
     {
