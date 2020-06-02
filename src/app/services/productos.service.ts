@@ -25,7 +25,7 @@ export class ProductosService {
   }
 
   guardarProducto(producto) {
-    console.log('porducto: ', producto);
+    console.log('producto: ', producto);
 
     return this.query('admin/productos/save', 'post', producto);
   }

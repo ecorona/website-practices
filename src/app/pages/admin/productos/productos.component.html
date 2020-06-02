@@ -30,14 +30,15 @@
         <div class="col-md-6">
           <fieldset class="form-group">
             <label>categoría</label>
-            <ng-select
-              [items]="categorias"
-              bindLabel="nombre"
-              placeholder="Selecciona una categoría"
-              appendTo="body"
-              multiple="false"
-            >
-            </ng-select>
+            <select formControlName="categoria">
+              <option value="" disabled>Elige una categoria</option>
+              <option
+                *ngFor="let categoria of categorias"
+                [ngValue]="categoria.id"
+              >
+                {{ categoria.nombre }}
+              </option>
+            </select>
           </fieldset>
         </div>
       </div>
