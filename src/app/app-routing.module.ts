@@ -19,6 +19,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 
 import { ClientesGuard } from './guards/clientes.guard';
 import { UsuariosGuard } from './guards/usuarios.guard';
+import { NavCategoriasComponent } from './pages/nav-categorias/nav-categorias.component';
 
 const routes: Routes = [
   {
@@ -104,6 +105,11 @@ const routes: Routes = [
     canActivate: [ClientesGuard],
   },
   {
+    path: 'categorias',
+    component: NavCategoriasComponent,
+    canActivate: [ClientesGuard],
+  },
+  {
     path: '**',
     redirectTo: 'home', //cualquier otra ruta, mandar a home (DEFAULT)
   },
@@ -113,4 +119,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

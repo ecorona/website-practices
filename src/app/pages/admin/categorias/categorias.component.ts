@@ -29,7 +29,7 @@ export class CategoriasComponent implements OnInit {
     this.background.setClase('categorias');
   }
   buscarCategorias() {
-    console.log('buscando usuarios');
+    console.log('buscando categorias');
     this._categorias.buscarCategorias().subscribe(
       (resp) => {
         console.log('respueste de Get', resp);
@@ -39,7 +39,7 @@ export class CategoriasComponent implements OnInit {
       },
       (err) => {
         this.error = true;
-        console.log('error traer registros', err);
+        console.log('error traer categorias', err);
       }
     );
   }

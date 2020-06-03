@@ -31,6 +31,7 @@ import { CategoriasComponent } from './pages/admin/categorias/categorias.compone
 
 import { ProductosComponent } from './pages/productos/productos.component';
 import { AdminProductosComponent } from './pages/admin/productos/adminProductos.component';
+import { NavCategoriasComponent } from './pages/nav-categorias/nav-categorias.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AdminProductosComponent } from './pages/admin/productos/adminProductos.
     ProductosComponent,
     AdminProductosComponent,
     CategoriasComponent,
+    NavCategoriasComponent,
   ],
   imports: [
     BrowserModule,
