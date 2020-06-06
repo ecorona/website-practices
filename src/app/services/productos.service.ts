@@ -13,7 +13,7 @@ export class ProductosService {
 
   jwt = '';
 
-  constructor(private http: HttpClient, private _swal: SwalService) {}
+  constructor(private http: HttpClient, private _swal: SwalService) { }
 
   query(query: string, action: string, data?: any) {
     const url = `${this.SERVER}/api/v1/${query}`;
@@ -32,6 +32,14 @@ export class ProductosService {
 
   buscarProductos() {
     return this.query('admin/productos/get', 'get');
+  }
+
+  verOfertas() {
+    return this.query('admin/productos/get-ofertas', 'get');
+  }
+
+  verCategoria(categoria) {
+    return this.query('admin/productos/get-cat/' + categoria, 'get');
   }
 
   borrarProducto(id) {
