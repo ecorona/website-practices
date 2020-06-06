@@ -105,7 +105,7 @@ const routes: Routes = [
     canActivate: [ClientesGuard],
   },
   {
-    path: 'categorias',
+    path: 'categorias/:idCategoria',
     component: NavCategoriasComponent,
     canActivate: [ClientesGuard],
   },
